@@ -21,7 +21,7 @@
 
   <groupId>com.github.heuermh.maven.plugin.changes</groupId>
   <artifactId>github-changes-maven-plugin</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>github-changes-maven-plugin Maven Plugin</name>
   <description>github-changes-maven-plugin Maven Plugin</description>
@@ -50,7 +50,7 @@
     <connection>scm:git:git@github.com:heuermh/github-changes-maven-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:heuermh/github-changes-maven-plugin.git</developerConnection>
     <url>scm:git:git@github.com:heuermh/github-changes-maven-plugin.git</url>
-    <tag>github-changes-maven-plugin-1.0</tag>
+    <tag>master</tag>
   </scm>
   <developers>
     <developer>
