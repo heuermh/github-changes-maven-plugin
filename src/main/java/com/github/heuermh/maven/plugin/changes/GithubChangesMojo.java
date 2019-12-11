@@ -40,6 +40,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueState;
 import org.kohsuke.github.GHMilestone;
@@ -111,7 +112,7 @@ public final class GithubChangesMojo extends AbstractMojo {
 
             getLog().info("Retrieving issues for milestone " + milestoneId + " from repository " + m.group(1));
 
-            GitHub github = GitHub.connect();
+            GitHub github = GitHubBuilder.fromPropertyFile().build();
             GHRepository repository = github.getRepository(m.group(1));
             GHMilestone milestone = repository.getMilestone(milestoneId);
             List<GHIssue> pulls = new ArrayList<GHIssue>();
