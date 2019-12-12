@@ -36,6 +36,6 @@ GitHub milestone identifier are written to the changes file `CHANGES.md` (which 
 via `-DchangesFile=my-changes.md` parameter) in Markdown format.
 
 An example `CHANGES.md` file maintained by this plugin may be seen in the
-[https://github.com/bigdatagenomics/adam](bigdatagenomics/adam) repository at:
+[bigdatagenomics/adam](https://github.com/bigdatagenomics/adam) repository at:
 
 https://github.com/bigdatagenomics/adam/blob/master/CHANGES.md
