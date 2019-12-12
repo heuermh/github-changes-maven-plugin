@@ -19,14 +19,23 @@ To build
 
 ### Running github-changes-maven-plugin
 
-Run the `github-changes-maven-plugin` specifying the Github milestone identifier.
+Run the `github-changes-maven-plugin` specifying the GitHub milestone identifier.
 
 ```bash
 $ mvn \
-    com.github.heuermh.maven.plugin.changes:github-changes-maven-plugin:1.0:github-changes \
+    com.github.heuermh.maven.plugin.changes:github-changes-maven-plugin:1.1:github-changes \
     -DmilestoneId=1
 ```
 
+The GitHub repository is parsed from the project issue management URL. If this is not specified
+in `pom.xml`, it can be provided via `-DissueManagementUrl=https://github.com/user/repo/issues`
+parameter.
+
 Changes from closed issues and merged or closed pull requests associated with the specified
-Github milestone identifier are written to the changes file `CHANGES.md` (which can be specified
+GitHub milestone identifier are written to the changes file `CHANGES.md` (which can be specified
 via `-DchangesFile=my-changes.md` parameter) in Markdown format.
+
+An example `CHANGES.md` file maintained by this plugin may be seen in the
+[https://github.com/bigdatagenomics/adam](bigdatagenomics/adam) repository at:
+
+https://github.com/bigdatagenomics/adam/blob/master/CHANGES.md
