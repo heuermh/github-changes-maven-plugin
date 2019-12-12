@@ -26,7 +26,7 @@
 
   <groupId>com.github.heuermh.maven.plugin.changes</groupId>
   <artifactId>github-changes-maven-plugin</artifactId>
-  <version>1.1</version>
+  <version>1.2-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>github-changes-maven-plugin Maven Plugin</name>
   <description>github-changes-maven-plugin Maven Plugin</description>
