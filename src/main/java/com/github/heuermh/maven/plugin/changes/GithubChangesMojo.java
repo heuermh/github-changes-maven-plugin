@@ -23,6 +23,7 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import java.util.regex.Matcher;
@@ -106,8 +107,11 @@ public final class GithubChangesMojo extends AbstractMojo {
             writer = new PrintWriter(new FileWriter(milestoneChanges), true);
 
             Matcher m = ISSUE_URL.matcher(issueManagementUrl);
-            if (!m.matches()) {
-                throw new IOException("could not parse owner and repo from issue management URL " + issueManagementUrl);
+            if (m.matches()) {
+                getLog().info("Parsed GitHub repository " + m.group(1) + " from issue management URL " + issueManagementUrl);
+            }
+            else {
+                throw new IOException("could not parse GitHub owner and repo from issue management URL " + issueManagementUrl);
             }
 
             getLog().info("Retrieving issues for milestone " + milestoneId + " from repository " + m.group(1));
@@ -141,20 +145,22 @@ public final class GithubChangesMojo extends AbstractMojo {
         }
     }
 
-    static File merge(final File changesFile, final File milestoneChanges) throws IOException {
+    File merge(final File changesFile, final File milestoneChanges) throws IOException {
         PrintWriter writer = null;
         File mergedFile = File.createTempFile("CHANGES.merged", ".md");
         try {
             writer = new PrintWriter(new FileWriter(mergedFile), true);
-            List<String> changesLines = Files.readLines(changesFile, Charset.forName("UTF-8"));
-            List<String> milestoneChangesLines = Files.readLines(milestoneChanges, Charset.forName("UTF-8"));
+            List<String> changesLines = changesFile.exists() ? Files.readLines(changesFile, Charset.forName("UTF-8")) : Collections.emptyList();
+            List<String> milestoneChangesLines = milestoneChanges.exists() ? Files.readLines(milestoneChanges, Charset.forName("UTF-8")) : Collections.emptyList();
 
             if (changesLines.isEmpty()) {
                 // add new header
+                getLog().info("Found empty changes file " + changesFile + ", adding new header");
                 writer.println("# Changelog #");
             }
             else {
                 // write header from existing CHANGES.md
+                getLog().info("Using header from existing changes file " + changesFile);
                 writer.println(changesLines.get(0));
             }
 
