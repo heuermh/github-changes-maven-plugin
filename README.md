@@ -23,7 +23,7 @@ Run the `github-changes-maven-plugin` specifying the GitHub milestone identifier
 
 ```bash
 $ mvn \
-    com.github.heuermh.maven.plugin.changes:github-changes-maven-plugin:1.1:github-changes \
+    com.github.heuermh.maven.plugin.changes:github-changes-maven-plugin:1.2:github-changes \
     -DmilestoneId=1
 ```
 
